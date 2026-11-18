@@ -30,6 +30,7 @@
 3. [03-claude-code.md](03-claude-code.md)（Codexを使う場合は同文書の節を読む）
 4. [04-unity.md](04-unity.md)
 5. [05-maya.md](05-maya.md)（学校の方針で必要な場合のみ）
+6. [06-natural-language-placement.md](06-natural-language-placement.md)（任意・応用。自然言語でシーンにアセットを配置する）
 
 インストールのあとは、**VSCode を完全に終了して起動し直してから**、次の手順に進んでください。
 
