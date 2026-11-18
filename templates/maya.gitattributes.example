@@ -1,0 +1,21 @@
+# Maya プロジェクトの .gitattributes（作品フォルダの直下に置く。最初のコミットに含める）
+
+# 改行コードを LF に固定する（Windows の CRLF 事故の防止）
+* text=auto eol=lf
+
+# テキストとして扱うファイル（差分が読める。Maya ASCII形式）
+*.ma text
+
+# バイナリとして扱うファイル（差分や改行変換をしない。Maya Binary形式ほか）
+*.mb binary
+*.fbx binary
+*.png binary
+*.jpg binary
+*.psd binary
+*.wav binary
+*.mp3 binary
+*.mp4 binary
+
+# 大容量のバイナリを Git LFS で扱う場合だけ、下の行のコメントを外す（git lfs install が必要）
+# *.mb filter=lfs diff=lfs merge=lfs -text
+# *.fbx filter=lfs diff=lfs merge=lfs -text
