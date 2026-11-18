@@ -1,15 +1,19 @@
 # Maya プロジェクトの .gitignore（作品フォルダの直下に置く）
-# 自動保存・一時ファイルは入れない。scenes・sourceimages は入れる。
+# 自動保存・一時ファイル・レンダー出力は入れない。scenes・sourceimages は入れる。
 
 # Maya の自動保存と一時ファイル
 *.autosave
 *.tmp
 *.bak
 autosave/
+incrementalSave/
 
-# Maya が作る一時フォルダ
+# Maya が作る一時フォルダ・レンダー出力・キャッシュ
 *.swatches
 *.mayaSwatches
+images/
+renderData/
+cache/
 
 # IDE・OS の設定
 .vscode/
