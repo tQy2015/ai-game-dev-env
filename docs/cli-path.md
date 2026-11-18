@@ -39,10 +39,20 @@ where.exe unity
 3. OK を押して閉じ、**VSCode を完全に終了して起動し直す**。
 4. §2 の `where.exe` を再実行する。
 
-## 4. Claude Code の注意（Windows）
+## 4. Claude Code の注意（Windows）【公式確認】
 
-- Claude Code は Git for Windows の **bash** を使います。`where.exe bash` で見つからない場合、Claude Code が起動しないか、警告が出ます。
-- 対処: Git for Windows を入れ直す（bash が含まれる標準インストール）。または、環境変数 `CLAUDE_CODE_GIT_BASH_PATH` に `bash.exe` の場所（例: `C:\Program Files\Git\bin\bash.exe`）を指定する（※この変数名は公式ドキュメントで要確認・未検証）。
+- Git for Windows は**任意**です。無い場合、Claude Code は PowerShell でコマンドを実行します。
+- Git for Windows が入っているのに bash を見つけられない場合は、設定ファイル（`%USERPROFILE%\.claude\settings.json`）に次を追記します。
+
+```json
+{
+  "env": {
+    "CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"
+  }
+}
+```
+
+- 既知の不具合: この変数を設定しても認識されない報告があります（GitHub の issue）。その場合は先生に相談してください。
 
 ## 5. Codex の注意
 
@@ -67,4 +77,4 @@ where.exe unity
 ## 8. 未検証の点
 
 - 学生機（Windows、クリーンな環境）での通し確認は未実施です。
-- Claude Code の `CLAUDE_CODE_GIT_BASH_PATH` の扱いは、公式ドキュメントで確認してから本番に載せてください。
+- Unity CLI の既定のインストール先は公式に明記されていません。`where.exe unity` で確認してください。
