@@ -1,6 +1,6 @@
 # CLI が使えない（PATH）の確認と直し方（Windows・VSCode のターミナル）
 
-**対象**: git、gh、code、node、npm、claude、codex、unity。VSCode の統合ターミナルで操作する学生向け。
+**対象**: git、gh、code、node、npm、claude、codex、unity、maya（mayapy）。VSCode の統合ターミナルで操作する学生向け。
 
 ## 1. 原則（最初に読む）
 
@@ -23,6 +23,7 @@ where.exe node
 where.exe npm
 where.exe claude
 where.exe unity
+where.exe mayapy
 ```
 
 - 例: `where.exe git` が `C:\Program Files\Git\cmd\git.exe` を返せば OK。
@@ -34,7 +35,7 @@ where.exe unity
 
 1. スタートメニューで「環境変数」と検索 →「環境変数を編集」を開く。
 2. 上段「ユーザー環境変数」の `Path` を選び「編集」→「新規」で、次のフォルダを 1 行ずつ追加する。
-   - Unity CLI: `%LOCALAPPDATA%\Unity\bin`
+   - Unity CLI: `%LOCALAPPDATA%\Unity\bin`（未確認。`where.exe unity` の結果を優先する）
    - 他のツールは、`where.exe` が返した場所のフォルダ（`.exe` があるフォルダ）を追加する。
 3. OK を押して閉じ、**VSCode を完全に終了して起動し直す**。
 4. §2 の `where.exe` を再実行する。
@@ -60,12 +61,18 @@ where.exe unity
 - 対処: 保存先のフォルダを §3 の手順で `Path` に追加し、VSCode を起動し直す。
 - Codex の本文（設定ファイル、サンドボックス）は未作成です。
 
-## 6. ターミナルの種類を確認する
+## 6. Maya の注意
+
+- `maya`・`mayapy` は既定で PATH に入っていないことがあります【未検証】。
+- 既定のインストール先（二次情報・未確認）: `C:\Program Files\Autodesk\Maya<版>\bin\`（この中に `maya.exe`・`mayapy.exe` がある）。`<版>` は `Maya2026`・`Maya2027` のように、実際にインストールした版の名前に置き換える。
+- 対処: 上記フォルダを §3 の手順で `Path` に追加する。見つからない場合は、AI に「mayapy の場所を探して」と頼むのも有効です。
+
+## 7. ターミナルの種類を確認する
 
 - VSCode 下部のターミナルの「+」の横の矢印で、プロファイルを確認する。
 - 学生の標準は **PowerShell** を推奨します。WSL 系のプロファイルを選んでいると、Windows の PATH が見えないことがあります。
 
-## 7. よくある症状
+## 8. よくある症状
 
 | 症状 | 原因 | 直し方 |
 |---|---|---|
@@ -74,7 +81,7 @@ where.exe unity
 | VSCode では動くが、外部の PowerShell では動かない（逆も）| 別々に開いた環境の PATH が違う | 両方を開き直す |
 | Claude Code が bash を見つけられない | Git for Windows の bash が無い、または PATH に無い | §4 |
 
-## 8. 未検証の点
+## 9. 未検証の点
 
 - 学生機（Windows、クリーンな環境）での通し確認は未実施です。
 - Unity CLI の既定のインストール先は公式に明記されていません。`where.exe unity` で確認してください。
