@@ -73,6 +73,24 @@
 | エラーのダイアログが出る | 内容を写真に撮って、先生に見せる |
 | Maya が重い | 作業中のシーンを保存してから、Maya を開き直す |
 
+## 8. AI と接続する（任意・教員の指導のもとで）
+
+AI（Claude Code など）から Maya を操作する場合だけ行います。接続口（ポート 7001）は認証がなく、同じパソコンの他のプログラムからも接続できます。**使い終わったら必ず閉じてください。**
+
+1. 作品フォルダに `open_port.mel` を作り、次の 1 行を保存する。
+   ```mel
+   python("import maya.cmds as cmds; cmds.commandPort(name=':7001', sourceType='python', echoOutput=True)");
+   ```
+2. Maya を、このファイルを読み込んで起動する（例: `maya.exe -script open_port.mel`。【未検証（Windows）】）。
+3. AI に「Maya に接続して、立方体を作って」と頼む。
+4. 終わったら、Maya の Script Editor（Python タブ）で次を実行して閉じる。
+   ```python
+   import maya.cmds as cmds
+   cmds.commandPort(name=":7001", close=True)
+   ```
+
+接続できないときは [faq.md](faq.md) を見てください。
+
 ## 9. 未検証の項目
 
 - この手順は、学生機の Windows で、まだ一度も通していません【未検証】。
