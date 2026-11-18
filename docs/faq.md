@@ -11,7 +11,7 @@
 2. [05-maya.md](05-maya.md) §9 方法B の `open_port.mel` を使って、Maya を起動し直す。
 3. AI に、もう一度接続を頼む。
 
-**確認したこと**: 同じ Maya を毎回起動し直して比べた結果、`python` では接続でき、`mel` では接続できませんでした（2026-11-18・Linux 環境）。Windows での確認は、まだ行っていません。
+**確認したこと**: 同じ Maya を毎回起動し直して比べた結果、`python` では接続でき、`mel` では接続できませんでした（2026-11-18・教員の検証環境〔Linux〕で確認）。Windows での確認は、まだ行っていません。
 
 ## Unity Editor が「ライセンスが無い」と言って止まる
 
@@ -21,9 +21,17 @@
 
 **直し方**: Unity Hub を開いてサインインし、ライセンス（Personal 等）を取得してから、もう一度実行してください。
 
-**確認したこと**: 2026-11-18・Windows機で実機確認。CLI側の`unity auth status`は成功していても、Editor本体側が未確認だとこのエラーで止まりました。
+**確認したこと**: 2026-11-18・Windows 機で実機確認。CLI 側の `unity auth status` は成功していても、Editor 本体側が未確認だとこのエラーで止まりました。
 
-## AIに作ってもらった新しいシーンが、Unityを開いても出てこない
+## Unity Editor を2つ開こうとすると、エラーになる・固まる
+
+**症状**: AI に作業を頼んでいる最中に、自分でも Unity Editor を開こうとすると、エラーが出る・反応が無くなる。
+
+**原因**: Unity は、同じプロジェクトを Editor で同時に2つ開くことができません（プロジェクトがロックされます）。AI が裏側で `-batchmode` 実行している間も、同じプロジェクトを使っています。
+
+**対応**: AI の作業が終わる（Editor が閉じる）のを待ってから、自分で Editor を開く。「終わったら教えて」と頼むとよい。[06-natural-language-placement.md](06-natural-language-placement.md) も参照。
+
+## AI に作ってもらった新しいシーンが、Unity を開いても出てこない
 
 **症状**: AI に新しいシーンを作ってもらったはずなのに、Unity Editor を開くと前に開いていたシーンのまま。
 
@@ -31,7 +39,7 @@
 
 **直し方**: Unity の **Project** ウィンドウから、新しく作られたシーン（`Assets/Scenes/` の中）をダブルクリックして開く。[06-natural-language-placement.md](06-natural-language-placement.md) も参照。
 
-## Unity Editorに「Account API did not become accessible」という警告が出る
+## Unity Editor に「Account API did not become accessible」という警告が出る
 
 **症状**: コンソールに `Account API did not become accessible within 30 seconds.` という警告（エラーではない）が出る。
 
