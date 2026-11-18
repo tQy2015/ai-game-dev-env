@@ -1,0 +1,10 @@
+# OS・エディタ
+.DS_Store
+Thumbs.db
+.vscode/
+
+# 学生の作業データ・秘密情報
+.claude/settings.local.json
+.env
+*.key
+*.pem
