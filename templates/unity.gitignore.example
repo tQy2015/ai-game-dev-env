@@ -1,0 +1,32 @@
+# Unity プロジェクトの .gitignore（作品フォルダの直下に置く）
+# 生成物と個人の設定は入れない。Assets・Packages・ProjectSettings を入れる。
+
+# 生成物（Unity が自動で作り直す）
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Bb]uild/
+[Bb]uilds/
+[Mm]emoryCaptures/
+
+# エディタが自動生成するプロジェクトファイル
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+
+# IDE・OS の設定
+.vs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 秘密情報（ビルドの署名鍵など）
+*.keystore
+*.jks
+.env
