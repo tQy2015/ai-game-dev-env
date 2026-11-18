@@ -54,6 +54,31 @@ unity --version
 
 **注意【二次情報】**: 旧版の調査では、インストーラーが PATH を自動で追加する、という記録がありました。ただし、学生機で再確認していません。
 
+## 4-1. VSCode から使う設定（Unity CLI とセット）
+
+Unity CLI は、**VSCode の統合ターミナルから使う前提**です。次の 3 つを、この順でそろえてください。
+
+1. **PATH を通す**（§4）。Windows の環境変数に、`unity.exe` のフォルダを入れる。
+2. **VSCode を完全に終了して起動し直す。** VSCode は、起動した時点の PATH を引き継ぐためです。
+3. **統合ターミナルの既定を PowerShell にする**（[01-vscode.md](01-vscode.md) §2）。
+
+**確認**（統合ターミナルで実行）:
+
+```powershell
+where.exe unity
+unity --version
+unity doctor
+```
+
+- `where.exe unity` が場所を返し、`unity --version` が版を返せば、VSCode からの設定は完了です。
+- VSCode の設定で PATH を直接書き足す方法もあります（`terminal.integrated.env.windows` に `Path` を指定する）。ただし、この方法は学生機で未検証です【未検証】。通常は §4 の環境変数で十分です。
+- 設定ファイル（`settings.json`）は、VSCode の「設定を開く（JSON）」から編集できます。編集は、先生の確認を受けてから行ってください。
+
+**よくある失敗**
+- インストール直後に、開いたままの VSCode で `unity` が認識されない → VSCode を完全に終了して起動し直す。
+- 統合ターミナルが、PowerShell 以外（WSL など）になっている → 既定を PowerShell に戻す。
+- `unity doctor` で、サインインの項目が未ログイン → `unity auth login` を本人が行う。
+
 ## 5. 基本のコマンド【公式確認】
 
 | コマンド | 役割 |
