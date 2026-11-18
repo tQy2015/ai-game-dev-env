@@ -9,16 +9,17 @@
 | 役割 | ツール | 役割の説明 |
 |---|---|---|
 | 作業場所 | VSCode | 文章・ファイル・ターミナルをまとめて扱う |
-| 相棒（AI） | Claude Code（または Codex） | 日本語の指示をもとに作業を進める |
 | 記録と共有 | Git / GitHub | 作ったものを保存し、先生やチームに渡す |
+| 相棒（AI） | Claude Code（または Codex） | 日本語の指示をもとに作業を進める |
 | ゲーム制作 | Unity | ゲームの本体を作る |
-| 3Dモデル | Maya | キャラクターや小道具を作る |
+| 3Dモデル | Maya 2027 | キャラクターや小道具を作る |
 
 ## 進め方（順番に読む）
 
 1. [docs/00-start-here.md](docs/00-start-here.md)（全体の流れ・所要時間）
-2. VSCode → Claude Code（またはCodex）→ Git / GitHub → Unity → Maya の順に導入
-3. うまく動かないときは [docs/cli-path.md](docs/cli-path.md)（ターミナルでツールが見つからない場合）
+2. VSCode → Git / GitHub → Claude Code（またはCodex）→ Unity → Maya の順に導入
+3. うまく動かないときは [docs/cli-path.md](docs/cli-path.md)（ターミナルでツールが見つからない場合）・[docs/faq.md](docs/faq.md)（よくある質問）
+4. 応用: [docs/06-natural-language-placement.md](docs/06-natural-language-placement.md)（自然言語でシーンにアセットを配置する・任意）
 
 ## 注意（必ず読む）
 
@@ -31,4 +32,4 @@
 
 ## 状態
 
-作成中（骨組みと一部の文書のみ）。
+導入文書（00〜06）・FAQ・テンプレート一式は揃っています。学生機での通し確認はまだです。各文書の【未検証】の表示を確認しながら進めてください。

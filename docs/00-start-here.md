@@ -10,9 +10,9 @@
 | 記録と共有 | Git / GitHub CLI（gh） | [02-git-and-gh.md](02-git-and-gh.md) |
 | 相棒（AI） | Claude Code（Codexは任意） | [03-claude-code.md](03-claude-code.md) |
 | ゲーム制作 | Unity（Unity CLI を含む） | [04-unity.md](04-unity.md) |
-| 3Dモデル | Maya 2026 | [05-maya.md](05-maya.md) |
+| 3Dモデル | Maya 2027 | [05-maya.md](05-maya.md) |
 
-困ったときは [cli-path.md](cli-path.md)（ツールが見つからない場合）と [safety-and-co-creation.md](safety-and-co-creation.md)（安全な使い方）を読みます。
+困ったときは [cli-path.md](cli-path.md)（ツールが見つからない場合）、[faq.md](faq.md)（よくある質問）、[safety-and-co-creation.md](safety-and-co-creation.md)（安全な使い方）を読みます。
 
 ## 始める前に
 
