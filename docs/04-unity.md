@@ -99,13 +99,13 @@ unity doctor
 
 ## 7. Unity プロジェクトの Git 管理
 
-### 7-1. 先に Editor の設定を 2 つ変える【二次情報・melon の実機で確認】
+### 7-1. 先に Editor の設定を 2 つ変える【二次情報・教員側の実機で確認】
 
 Unity の **Project Settings → Editor** で、次の 2 つを確認します。
 - **Asset Serialization → Mode: Force Text**（テキスト形式で保存する。差分が読める）
 - **Version Control → Mode: Visible Meta Files**（`.meta` ファイルを表示する）
 
-melon の実プロジェクトでは、`ProjectSettings/EditorSettings.asset` の `m_SerializationMode: 2` で、Force Text を確認しています。画面の名称は版によって違うことがあるので、見つからない場合は先生に相談してください。
+実プロジェクトでは、`ProjectSettings/EditorSettings.asset` の `m_SerializationMode: 2` で、Force Text を確認しています。画面の名称は版によって違うことがあるので、見つからない場合は先生に相談してください。
 
 ### 7-2. どのフォルダを Git に入れるか
 
@@ -159,6 +159,7 @@ git commit -m "feat: 作品の初期状態を追加"
 - `unity` が見つからない: §4 と [cli-path.md](cli-path.md)。
 - サインインが通らない: 先生に相談する。
 - 差分が大量に出る: §7-1 の設定（Force Text）と §7-2 の .gitignore を確認する。
+- **`No valid Unity Editor license found` と出て、数秒で Editor が終了する**【実機確認・2026-11-18】: これは `unity auth login`（CLI 側のサインイン）とは**別の問題**です。`unity auth status` が成功していても、Editor 本体（Unity Hub 経由のアカウント連携・ライセンス取得）側が未完了だとこのエラーになります。Unity Hub を開いてサインインし、ライセンス（Personal 等）を取得してから、もう一度実行してください。
 
 ## 次へ
 
