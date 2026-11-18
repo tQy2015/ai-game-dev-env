@@ -54,7 +54,7 @@ unity --version
 
 **注意【二次情報】**: 旧版の調査では、インストーラーが PATH を自動で追加する、という記録がありました。ただし、学生機で再確認していません。
 
-## 4-1. VSCode から使う設定（Unity CLI とセット）
+### 4-1. VSCode から使う設定（Unity CLI とセット）
 
 Unity CLI は、**VSCode の統合ターミナルから使う前提**です。次の 3 つを、この順でそろえてください。
 
@@ -122,7 +122,7 @@ Unity の **Project Settings → Editor** で、次の 2 つを確認します�
 
 ### 7-3. 最初に置く 2 つのファイル
 
-テンプレートを、作品フォルダ（`Assets` などがあるフォルダ）の直下にコピーします。
+テンプレート（このリポジトリ直下の `templates/` フォルダにあります）を、作品フォルダ（`Assets` などがあるフォルダ）の直下にコピーします。
 - `templates/unity.gitignore.example` → `.gitignore`
 - `templates/unity.gitattributes.example` → `.gitattributes`
 
@@ -159,7 +159,7 @@ git commit -m "feat: 作品の初期状態を追加"
 - `unity` が見つからない: §4 と [cli-path.md](cli-path.md)。
 - サインインが通らない: 先生に相談する。
 - 差分が大量に出る: §7-1 の設定（Force Text）と §7-2 の .gitignore を確認する。
-- **`No valid Unity Editor license found` と出て、数秒で Editor が終了する**【実機確認・2026-11-18】: これは `unity auth login`（CLI 側のサインイン）とは**別の問題**です。`unity auth status` が成功していても、Editor 本体（Unity Hub 経由のアカウント連携・ライセンス取得）側が未完了だとこのエラーになります。Unity Hub を開いてサインインし、ライセンス（Personal 等）を取得してから、もう一度実行してください。
+- **`No valid Unity Editor license found` と出て、数秒で Editor が終了する**【実機確認・2026-11-18】: 自分で Unity Hub から起動した場合にも、AI に裏側で `-batchmode` 実行してもらった場合（[06-natural-language-placement.md](06-natural-language-placement.md)）にも起きます。これは `unity auth login`（CLI 側のサインイン）とは**別の問題**です。`unity auth status` が成功していても、Editor 本体（Unity Hub 経由のアカウント連携・ライセンス取得）側が未完了だとこのエラーになります。Unity Hub を開いてサインインし、ライセンス（Personal 等）を取得してから、もう一度実行してください。詳しくは [faq.md](faq.md) も参照。
 
 ## 次へ
 
