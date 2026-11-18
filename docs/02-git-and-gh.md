@@ -97,6 +97,10 @@ git remote add origin 自分のリポジトリのURL
 - **PUSH は、COMMIT の後に行う。** COMMIT していないものは、PUSH されません。
 - 手順の前後には、`git status`（変更の一覧）と `git log`（履歴）で、AI が何をしたかを確認します。
 
+### AI に守らせる約束（任意）
+
+作品フォルダに `templates/CLAUDE.md.example`（Claude Code 用）または `templates/AGENTS.md.example`（Codex 用）を、`CLAUDE.md` や `AGENTS.md` の名前でコピーして置くと、AI が毎回この作法を読んでから作業します。中身は、作品に合わせて書き足してください。
+
 ### 先生の更新を取り込む（upstream）
 
 先生のリポジトリ（upstream）からの取り込みは、PULL の一種です。
