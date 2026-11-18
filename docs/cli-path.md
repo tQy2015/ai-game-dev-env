@@ -1,0 +1,70 @@
+# CLI が使えない（PATH）の確認と直し方（Windows・VSCode のターミナル）
+
+**対象**: git、gh、code、node、npm、claude、codex、unity。VSCode の統合ターミナルで操作する学生向け。
+
+## 1. 原則（最初に読む）
+
+- VSCode のターミナルは、**VSCode を起動した時点の PATH** を引き継ぎます。
+- インストール直後は、開いている VSCode にも PowerShell にも新しい PATH が反映されていません。
+- そのため、**インストールしたら VSCode を完全に終了してから起動し直してください。** 「ターミナルを開き直す」だけでは足りないことがあります。
+- 「Reload Window」（ウィンドウの再読み込み）でも反映されないことがあるため、使わないでください。
+
+## 2. 手順
+
+1. インストールが終わったら、VSCode の**全ウィンドウを閉じる**。タスクトレイに VSCode が残っていないか確認し、残っていれば終了する。
+2. VSCode を起動し、統合ターミナル（`Ctrl` + `` ` ``）を開く。
+3. 次のコマンドを順に実行する。**「見つかりません」と出たものだけ** 4 に進む。
+
+```powershell
+where.exe git
+where.exe gh
+where.exe code
+where.exe node
+where.exe npm
+where.exe claude
+where.exe unity
+```
+
+- 例: `where.exe git` が `C:\Program Files\Git\cmd\git.exe` を返せば OK。
+- 「INFO: 指定されたファイルが見つかりません」と出た場合は、そのツールの PATH がまだ通っていません。
+
+4. まだ通らない場合は、PATH を手で追加する（§3）。
+
+## 3. 手動で PATH を追加する
+
+1. スタートメニューで「環境変数」と検索 →「環境変数を編集」を開く。
+2. 上段「ユーザー環境変数」の `Path` を選び「編集」→「新規」で、次のフォルダを 1 行ずつ追加する。
+   - Unity CLI: `%LOCALAPPDATA%\Unity\bin`
+   - 他のツールは、`where.exe` が返した場所のフォルダ（`.exe` があるフォルダ）を追加する。
+3. OK を押して閉じ、**VSCode を完全に終了して起動し直す**。
+4. §2 の `where.exe` を再実行する。
+
+## 4. Claude Code の注意（Windows）
+
+- Claude Code は Git for Windows の **bash** を使います。`where.exe bash` で見つからない場合、Claude Code が起動しないか、警告が出ます。
+- 対処: Git for Windows を入れ直す（bash が含まれる標準インストール）。または、環境変数 `CLAUDE_CODE_GIT_BASH_PATH` に `bash.exe` の場所（例: `C:\Program Files\Git\bin\bash.exe`）を指定する（※この変数名は公式ドキュメントで要確認・未検証）。
+
+## 5. Codex の注意
+
+- `npm install -g @openai/codex` の後、`where.exe codex` が見つからない場合は、npm のグローバル保存先（`npm config get prefix` の結果）が PATH に入っていないことが原因です。
+- 対処: 保存先のフォルダを §3 の手順で `Path` に追加し、VSCode を起動し直す。
+- Codex の本文（設定ファイル、サンドボックス）は未作成です。
+
+## 6. ターミナルの種類を確認する
+
+- VSCode 下部のターミナルの「+」の横の矢印で、プロファイルを確認する。
+- 学生の標準は **PowerShell** を推奨します。WSL 系のプロファイルを選んでいると、Windows の PATH が見えないことがあります。
+
+## 7. よくある症状
+
+| 症状 | 原因 | 直し方 |
+|---|---|---|
+| `認識されません`（インストール直後） | VSCode が古い PATH を持っている | VSCode を完全に終了して起動し直す |
+| `where.exe` が何も返さない | PATH が未追加 | §3 |
+| VSCode では動くが、外部の PowerShell では動かない（逆も）| 別々に開いた環境の PATH が違う | 両方を開き直す |
+| Claude Code が bash を見つけられない | Git for Windows の bash が無い、または PATH に無い | §4 |
+
+## 8. 未検証の点
+
+- 学生機（Windows、クリーンな環境）での通し確認は未実施です。
+- Claude Code の `CLAUDE_CODE_GIT_BASH_PATH` の扱いは、公式ドキュメントで確認してから本番に載せてください。
