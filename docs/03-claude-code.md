@@ -70,7 +70,7 @@ claude doctor
 
 1. `claude doctor` で、設定ファイルのエラーが出ないこと。
 2. Claude Code を開き、`/permissions` と入力して、ルールが表示されること。
-3. 「curl で example.com を取得して」と頼む。**止まって確認を求めれば成功。** 同様に PowerShell 側でも確認すること（`Invoke-WebRequest` などを頼む）。片方だけ止まる場合は設定を見直す。
+3. 「curl で example.com を取得して」と頼む。**実行されずに拒否されれば成功。**（テンプレートの設定では `curl`/`Invoke-WebRequest` 等は deny のため、確認ダイアログは出ずにそのまま拒否されます。）同様に PowerShell 側でも確認すること（`Invoke-WebRequest` などを頼む）。片方だけ拒否されない場合は設定を見直す。
 
 分からない、止まらない、エラーが出る場合は、自分で直さず先生に画面を見せてください。
 
@@ -81,7 +81,7 @@ claude doctor
 
 ## 5. CLAUDE.md と STATE.md（自分用のメモ）
 
-Claude Code は、作業フォルダに `CLAUDE.md` と `STATE.md` があると、作業の最初に読みます。
+Claude Code は、作品フォルダに `CLAUDE.md` と `STATE.md` があると、作業の最初に読みます。
 
 | ファイル | 役割 | 例 |
 |---|---|---|
